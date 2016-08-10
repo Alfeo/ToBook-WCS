@@ -1,0 +1,33 @@
+
+    <h1>{{'Liste des établissements'|trans}}</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>{{'Nom des établissements'|trans}}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for professionnel in listeprofessionnels %}
+            <tr>
+                <td>{{ professionnel.usprProfId.profNom }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('club-house', { 'profCode': professionnel.usprProfId.profCode }) }}">{{ 'Voir la fiche'|trans }}</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('professionnel_edit', { 'id': professionnel.usprProfId.Id }) }}">{{ 'Modifier'|trans }}</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('professionnel_new') }}">{{'Créer un nouvel établissement'|trans}}</a>
+        </li>
+    </ul>

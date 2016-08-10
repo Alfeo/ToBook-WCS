@@ -1,0 +1,46 @@
+# redirecting the root
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%locale%
+        permanent: true
+
+tobook:
+    resource: "@TobookBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /{_locale}
+
+users:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+
+wcs_sms:
+    resource: "@WCSSMSBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+
+wcs_rating:
+    resource: "@WCSRatingBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+
+wcs_property:
+    resource: "@WCSPropertyBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+
+wcs_content:
+    resource: "@WCSContentBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+
+wcs_emailing:
+    resource: "@WCSEmailingBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

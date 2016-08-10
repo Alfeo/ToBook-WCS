@@ -1,0 +1,15 @@
+{% extends 'TobookBundle::base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <select name="categorie">
+            {% for cat in cate %}
+                <option> {{ cat.cateNom }}</option>
+            {% endfor %}
+        </select> 
+        <input type="submit" value="{{'Créer'|trans}}" />
+    {{ form_end(form) }}
+
+{% endblock %}

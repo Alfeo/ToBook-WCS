@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>{% block title %}{% endblock %} - ToBook</title>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/picto/logo-tobook.png') }}" />
+
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/style_clubhouse.css') }}" />
+        <link type="text/css" rel="stylesheet" href="{{ asset('css/jcarousel.connected-carousels.css') }}" />
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway">
+
+        {% block extraCSS %}{% endblock extraCSS %}
+
+    </head>
+    <body>
+        {# Loader de chargement #}
+        <div id="loading"></div>
+        <img id="loadingImg" src="{{ asset('img/gif/loading.svg') }}" alt="image de chargement page">
+        {% block navbar %}{% include ('TobookBundle:navbar:navbar.html.twig') %}
+            {% for message in app.session.flashbag.get('infos') %}
+                <div class="alert alert-success" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %} 
+        {% endblock navbar %}
+        
+        {% block ariane %}{% endblock ariane %}
+
+        {% block body %}{% endblock %}
+
+        <div class="col-md-12 footer"></div>
+
+        {% block javascript %}
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+            <script type="text/javascript" src="{{ asset('script/jquery.js') }}"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRBSgtiopCCg-UWOSzjqE1VN6KjSxTgss&signed_in=true&libraries=places" async defer></script>
+            <script type="text/javascript" src="{{ asset('script/jquery.js') }}"></script>
+            {# le script de la pagination doit etre charger avant le script showMap #}
+            <script type="text/javascript" src="{{ asset('/script/pagination.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('/script/showMap.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/jquery-1.11.0.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/jquery.leanModal.min.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('script/jquery.dependClass.js') }}"></script> 
+            <script type="text/javascript" src="{{ asset('script/jquery.scrolly.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/skel.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/util.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/main.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/bootstrap.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/clubhouse_jquery.jcarousel.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/clubhouse_jcarousel.connected-carousels.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/clubhouse_onglets.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('script/clubhouse_commentaires.js') }}"></script>
+        {% endblock javascript %}
+
+        {% block extraJavascript %}{% endblock extraJavascript %}
+
+    </body>   
+</html>
